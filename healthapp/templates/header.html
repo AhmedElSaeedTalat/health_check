@@ -1,0 +1,36 @@
+<nav>
+	<div class='container'>
+		<div class="menu">
+			<img src="../static/img/logo.jpg" alt="logo">
+			<ul>
+				<li><a href="{{ url_for('home') }}">home</a></li>
+				<li><a href="">about</a></li>
+			</ul>
+		</div>				
+		<div>
+			<ul>
+				{% if current_user.is_authenticated %}
+				<li><a href="{{ url_for('user_views.profile') }}" class=link-secondary'>{{ current_user.username }}</a></li>
+				<li><a href="{{ url_for('user_views.logout')}}"  class='link-secondary'>logout</a></li>
+				 {% else %}
+				 <li> <a href="{{ url_for('user_views.login')}}" class='link-secondary'>login</a></li>
+				 <li><a href="{{ url_for('user_views.register')}}" class='link-secondary'>register</a></li>
+				 {% endif %}
+			</ul>
+			<form class="search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
+			{{ searchform.hidden_tag() }}
+			{{ searchform.search(class="btn") }}
+			{% if searchform.name.errors %}
+			{{ searchform.name(class="form-control is-invalid") }}
+			<div class="invalid-feedback">
+				{% for error in searchform.email.errors %}
+				<span> {{ error }} </span>
+				{% endfor %}
+			</div>
+			{% else %}
+			{{ searchform.name(class="form-control", placeholder="search") }}
+			{% endif %}
+			</form>					
+		</div>
+	</div>
+</nav>
