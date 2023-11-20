@@ -13,6 +13,7 @@ bcrypt = Bcrypt()
 
 @user_views.route('/reg', methods=['GET', 'POST'], strict_slashes=False)
 def register():
+    """ route to registed new user """
     if current_user.is_authenticated:
         return redirect(url_for('user_views.profile'))
     form = Registration()
@@ -31,6 +32,7 @@ def register():
 
 @user_views.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login():
+    """ route to login user """
     if current_user.is_authenticated:
         return redirect(url_for('user_views.profile'))
     from healthapp.models.users import User
@@ -46,10 +48,12 @@ def login():
 
 @user_views.route('/user', strict_slashes=False)
 def profile():
+    """ route to return user profile template """
     return render_template('user.html')
 
 
 @user_views.route('/logout', strict_slashes=False)
 def logout():
+    """ route to log user out """
     logout_user()
     return redirect(url_for('home'))

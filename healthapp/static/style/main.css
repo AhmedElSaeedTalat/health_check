@@ -1,3 +1,97 @@
 body {
-		background-color: #e6f5fa;
-	}
+	background-color: #e6f5fa;
+}
+button {
+	background-color: #11b2ac;
+	color: white;
+}
+/* navbar header template */
+nav {
+	background-image: url('../img/2.png');
+	background-repeat: no-repeat;
+}
+nav img {
+	height: 120px;
+}
+nav .container {
+	display: flex;
+	justify-content: space-between;
+}
+nav .container div:nth-child(2) {
+	width: 30%;
+}
+nav .container form.search {
+	display: flex;
+	width: 100%;
+}
+nav .container .menu {
+	display: flex;
+	position: relative;
+}
+nav .container .menu ul{
+	margin: 0;
+	position: absolute;
+    bottom: -8px;
+    left: 107px;
+}
+nav .container .menu ul li {
+	background-color: #10b2ac;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-align: center;
+}  
+nav .container .menu a {
+	color: white;
+	text-decoration: none;
+}
+nav ul {
+	display: flex;
+	justify-content: flex-end;
+}
+nav ul li {
+	margin-right: 10px;
+	list-style-type: none;
+}
+.search input.btn {
+	background-color: #10b2ac;
+    color: white;
+    margin-right: 10px;
+}
+
+/* index template */
+.heading {
+	position: relative;
+
+}
+section.heading .div_img {
+	background-image: url('../img/doctor.jpg');
+	background-repeat: no-repeat;
+	margin: 9px;
+	filter: blur(2px);
+	min-height: 500px;
+	background-size: cover;
+}
+.heading .data_info {
+	position: absolute;
+	font-size: 2em;
+    position: absolute;
+    top: 60%;
+    left: 39%;
+    font-family: emoji;
+}
+.services {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.service_titles {
+	background-color: #11b2ac;
+    color: white;
+    border-radius: 5px;
+    padding: 30px;
+    width: 400px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}

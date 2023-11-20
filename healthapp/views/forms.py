@@ -35,3 +35,9 @@ class Login(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign-in')
+
+
+class SearchForm(FlaskForm):
+    """ flask search """
+    name = StringField('Name', validators=[DataRequired()])
+    search = SubmitField('Search')
