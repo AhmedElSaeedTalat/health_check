@@ -1,0 +1,16 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 620px;
+	background-image: url('../img/med.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.search {
+	width: 50%;
+	display: flex;
+}
+.search input {
+	margin-right: 10px;
+}

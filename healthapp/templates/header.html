@@ -18,7 +18,7 @@
 				 {% endif %}
 			</ul>
 			<form class="search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
-			{{ searchform.hidden_tag() }}
+			{{ searchform.csrf_token(id = "unique_id") }}
 			{{ searchform.search(class="btn") }}
 			{% if searchform.name.errors %}
 			{{ searchform.name(class="form-control is-invalid") }}

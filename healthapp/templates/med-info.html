@@ -4,7 +4,12 @@
 <span>no results look for another med</span>
 {% else %}
 <main id='drugs'>
+{% if data.name %}
+<input type="hidden" name="drug_name" id="drug_name" value={{ data.name}}>
+{% endif %}
+{% if current_user.is_authenticated %}
 <button class='btn save_drug'>save drug</button>
+{% endif %}
 <section class='drugs'>
 {% for item in data.data.results %}
 	<article class='med-article'>
@@ -38,4 +43,19 @@
 <article class="hidden med-article-hidden"></article>
 </section>
 </main>
+<script>
+$('.save_drug').click(function() {
+    const name = $('#drug_name').val()
+	fetch("{{ url_for('medicine_views.save_drug') }}", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify(name)}).then(res => res.text()).then(data => {
+			if (data == "success") {
+				alert('successfully added the drug to list of faviourite')
+			}
+	  });
+});
+</script>
 {% endblock content %}
