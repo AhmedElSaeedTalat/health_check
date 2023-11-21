@@ -42,6 +42,7 @@
 </nav>
 <script>
 // check if the authenticated user has a list of drugs
+{% if current_user.is_authenticated %}
 $(document).ready(function(){
   $.get("{{url_for('user_views.saved_drugs')}}", function (data, satus){
 	  if (data.length > 0) {
@@ -49,6 +50,7 @@ $(document).ready(function(){
 	  }
   });
 });
+{% endif %}
 // get list of drugs when hovered over the clicked button
 let response;
 $('#my_drugs').on("mouseover", function() {
