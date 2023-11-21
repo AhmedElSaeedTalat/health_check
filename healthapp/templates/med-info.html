@@ -12,31 +12,41 @@
 {% endif %}
 <section class='drugs'>
 {% for item in data.data.results %}
+	{% if item.description %}
 	<article class='med-article'>
 		<h4>description</h4>
 		<p class='med-p'>{{ item.description[0] }}</p>
 		<span class='readmore'>read more</span>
 	</article>
+	{% endif %}
+	{% if item.how_supplied %}
     <article class='med-article'>
 		<h4>Instructions</h4>
 		<p class='med-p'>{{ item.how_supplied[0] }}</p>
 		<span class='readmore'>read more</span>
     </article>
+	{% endif %}
+	{% if item.dosage_and_administration %}
     <article class='med-article'>
 		<h4>Dosage</h4>
 		<p class='med-p'>{{ item.dosage_and_administration[0] }}</p>
 		<span class='readmore'>read more</span>
     </article>
+	{% endif %}
+	{% if item.overdoesage %}
     <article class='med-article'>
 		<h4>Precaution</h4>
 		<p class='med-p'>{{ item.overdosage[0] }}</p>
 		<span class='readmore'>read more</span>
     </article>
+	{% endif %}
+	{% if item.pregnancy %}
     <article class='med-article'>
 		<h4>Pregnancy</h4>
 		<p class='med-p'>{{ item.pregnancy[0] }}</p>
 		<span class='readmore'>read more</span>
 	</article>
+	{% endif %}
 {% endfor %}
 {% endif %}
 <img src='../static/img/close_icon.png' class="hidden_button" id="close">

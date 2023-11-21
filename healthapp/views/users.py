@@ -2,7 +2,7 @@
 """ user view """
 from healthapp.views.forms import Registration
 from healthapp.views.forms import Login
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, jsonify, flash
 from flask_bcrypt import Bcrypt
 from flask import Blueprint
 from flask_login import login_user, current_user, logout_user
@@ -26,7 +26,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return redirect(url_for('user_views.profile'))
+        return redirect(url_for('home'))
     return render_template('registration.html', form=form)
 
 
@@ -42,14 +42,22 @@ def login():
         if user and bcrypt.check_password_hash(user.password,
                                                form.password.data):
             login_user(user)
-            return redirect(url_for('user_views.profile'))
+            return redirect(url_for('home'))
+        else:
+            flash('email or password isnt correct')
     return render_template('login.html', form=form)
 
 
-@user_views.route('/user', strict_slashes=False)
-def profile():
-    """ route to return user profile template """
-    return render_template('user.html')
+@user_views.route('/saved-drug', strict_slashes=False)
+def saved_drugs():
+    """ route to return list of saved drugs """
+    from healthapp.models.users import User
+    user = User.query.filter_by(id=current_user.id).first()
+    related_drugs = user.drugs
+    list_drugs = []
+    for drug in related_drugs:
+        list_drugs.append(drug.name)
+    return jsonify(list_drugs)
 
 
 @user_views.route('/logout', strict_slashes=False)

@@ -34,6 +34,18 @@ def display_med():
         return redirect(url_for('medicine_views.show_data'))
 
 
+@medicine_views.route('/drug-deatails', methods=['POST'],
+                      strict_slashes=False)
+def get_details():
+    """ post request from js """
+    name = request.get_json()
+    status, data = request_fda(name['name'])
+    data = {'status': status, 'data': data, 'name': name}
+    session['data'] = data
+    if status == 200:
+        return 'success'
+
+
 @medicine_views.route('/display-med',  strict_slashes=False)
 def show_data():
     """

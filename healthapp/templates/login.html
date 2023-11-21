@@ -1,35 +1,49 @@
 {% extends 'base.html' %}
 {% block content%}
-	<form method='POST'>
-		{{ form.hidden_tag() }}
-		<div class="form-group">
-			{{ form.email.label(class="form-control.label") }}
-			{% if form.email.errors %}
-			{{ form.email(class="form-control is-invalid") }}
-			<div class="invalid-feedback">
-				{% for error in form.email.errors %}
-				<span> {{ error }} </span>
-				{% endfor %}
-			</div>
-			{% else %}
-			{{ form.email(class="form-control") }}
-			{% endif %}
+<div class="container login-container">
+	<div class="row">
+		<div class="col-md-6">
+			<img src="../static/img/login.jpg" alt="login-image" class='img-fluid'>
 		</div>
-		<div class="form-group">
-			{{ form.password.label(class="form-control.label") }}
-			{% if form.password.errors %}
-			{{ form.passwrod(class="form-control is-invalid") }}
-			<div class="invalid-feedback">
-				{% for error in form.password.errors %}
-				<span> {{ error }} </span>
-				{% endfor %}
-			</div>
-			{% else %}
-			{{ form.password(class="form-control") }}
+    	<form method='POST' class="col-md-6 col-12">
+    		{{ form.hidden_tag() }}
+    		<div class="form-group">
+    			{{ form.email.label(class="form-control.label") }}
+    			{% if form.email.errors %}
+    			{{ form.email(class="form-control is-invalid") }}
+    			<div class="invalid-feedback">
+    				{% for error in form.email.errors %}
+    				<span> {{ error }} </span>
+    				{% endfor %}
+    			</div>
+    			{% else %}
+    			{{ form.email(class="form-control") }}
+    			{% endif %}
+    		</div>
+    		<div class="form-group">
+    			{{ form.password.label(class="form-control.label") }}
+    			{% if form.password.errors %}
+    			{{ form.passwrod(class="form-control is-invalid") }}
+    			<div class="invalid-feedback">
+    				{% for error in form.password.errors %}
+    				<span> {{ error }} </span>
+    				{% endfor %}
+    			</div>
+    			{% else %}
+    			{{ form.password(class="form-control") }}
+    			{% endif %}
+    		</div>
+    		{{ form.submit(class="btn btn-primary") }}
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			{% for message in messages %}
+			<p> {{message}}</p>
+			{% endfor %}
 			{% endif %}
-		</div>
-		{{ form.submit(class="btn btn-primary") }}
-	</form>
+			{% endwith %}
+    	</form>
+	</div>
+</div>
 	<script>
 		
 	</script>

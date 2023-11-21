@@ -3,6 +3,7 @@
 from healthapp import db
 from healthapp.models.base import BaseModel
 from flask_login import UserMixin
+from healthapp.models.drugs import users_drugs
 
 
 class User(BaseModel, db.Model, UserMixin):
@@ -11,6 +12,8 @@ class User(BaseModel, db.Model, UserMixin):
     username = db.Column(db.String(255), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    drugs = db.relationship('Drug', secondary=users_drugs, lazy='subquery',
+                            backref=db.backref('user', lazy=True))
 
     def __init__(self, username, email, password):
         self.username = username

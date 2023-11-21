@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
 {% block content%}
-	hello body
+{% for drug in drugs %}
+	{{drug.name}}
+{% endfor %}
 {% endblock content %}
