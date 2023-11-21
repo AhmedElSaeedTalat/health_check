@@ -54,6 +54,9 @@
 </section>
 </main>
 <script>
+// send a request on click to save a drug name on db
+// based on name of drug clicked on, if success received
+// alert is sent
 $('.save_drug').click(function() {
     const name = $('#drug_name').val()
 	fetch("{{ url_for('medicine_views.save_drug') }}", {
