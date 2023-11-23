@@ -41,16 +41,22 @@ article.med-article-hidden {
 	display: none;
 }
 .visible {
-	position: absolute;
-    top: 11%;
+	display: block;
 }
 .hidden_button {
 	display: none
 }
 #close {
 	position: absolute;
-	top: 11%;
-	right: 23%;
+	top: 1%;
+	right: 18%;
+    height: 20px;
+	cursor: pointer;
+}
+#close_diagnosis {
+	position: absolute;
+	top: -2%;
+    right: 33%;
     height: 20px;
 	cursor: pointer;
 }
@@ -60,4 +66,85 @@ button.save_drug {
 	align-self: center;
 	width: 103px;
     margin-top: 18px;
+}
+/* apimedic.com */
+.symptoms {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 45px;
+	margin-bottom: 150px;
+	min-height: 340px;
+	position: relative;
+}
+.form-symptoms {
+	width: 500px;
+	margin-bottom: 10px;
+}
+.form-symptoms input{
+	margin-bottom: 10px;
+}
+.symptoms .img {
+	width: 560px;
+}
+.symptoms .img img {
+	filter: drop-shadow(2px 4px 6px black);
+	width: 100%;
+}
+
+.symptoms h3 {
+	margin: 1px 0 6px 0;
+}
+.symptoms ul, h3 {
+	margin-left: 10px;
+	padding: 0;
+}
+.symptoms h3 {
+	font-size: 20px;
+}
+.symptoms li {
+	list-style-type: none;
+	margin-bottom: 10px;
+	 font-size: 18px;
+	font-family: emoji;
+	cursor: pointer;
+}
+.symp-btn {
+	background-color: #10b2ac;
+	color: white;
+}
+.diagnosis {
+	display: none;
+	width: 30%;
+	border: 3px solid #11b2ac;
+	border-radius: 5px;
+	padding: 15px;
+}
+.form-symptoms select {
+	margin-bottom: 10px;
+}
+.form-symptoms span{
+	display: none;
+}
+.show_span {
+	display: block;
+}
+.no_diagnosis {
+	display: none;
+}
+@media only screen and (max-width: 600px) {
+	.symptoms .img {
+		width: 310px;
+	}
+	.form-symptoms {
+		width: 310px;
+	}
+}
+@media only screen and (max-width: 300px) {
+	.symptoms .img {
+		width: 250px;
+	}
+	.form-symptoms {
+		width: 250px;
+	}
 }
