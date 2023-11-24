@@ -1,10 +1,11 @@
 #!/user/bin/python3
 """ view module for Medicines API """
 from flask import Blueprint, render_template, session, redirect, url_for
-from flask import abort, request, jsonify
+from flask import flash, request, jsonify
 from healthapp.views.forms import SearchForm
 from flask_login import current_user
 import requests
+from tenacity import retry, stop_after_attempt, wait_exponential
 import hmac
 import hashlib
 import base64
@@ -15,11 +16,17 @@ medicine_views = Blueprint('medicine_views', __name__, url_prefix='/medicines')
 
 class MakeRequests:
     """ class that makes api requests """
+    @retry(stop=stop_after_attempt(3), wait=wait_exponential())
     def request_fda(self, name):
         """ request data from fda """
         med_name = name
         url = 'https://api.fda.gov/drug/label.json?search=drug_interactions:{}&limit=1'.format(med_name)
-        data = requests.get(url)
+        try:
+            data = requests.get(url)
+        except requests.exceptions.RequestException:
+            res = ""
+            status = 500
+            return status, res
         status = data.status_code
         res = data.json()
         return status, res
@@ -51,7 +58,6 @@ class MakeRequests:
         token = self.request_token()
         url = 'https://sandbox-healthservice.priaid.ch/diagnosis'
         symptoms = json.dumps(data['symptoms'])
-        print('heeeeeeeeeeey', symptoms)
         headers = {'autherization': token, 'content-type': 'application/json'}
         params = {'token': token, 'symptoms': symptoms,
                   'gender': data['gender'], 'year_of_birth': int(data['year']),
@@ -69,9 +75,11 @@ def display_med():
         name = form.name.data
         fda_request = MakeRequests()
         status, data = fda_request.request_fda(name)
+        if status == 500:
+            flash('request error for the moment please try again later')
+            return redirect(url_for('home'))
         data = {'status': status, 'data': data, 'name': name}
         session['data'] = data
-    #return jsonify(data)
         return redirect(url_for('medicine_views.show_data'))
 
 
@@ -144,7 +152,7 @@ def health_check():
 @medicine_views.route('/diagnosis', methods=['POST'],
                       strict_slashes=False)
 def request_diagnosis():
-    """ 
+    """
     function to make api request
     to request diagnosis for symptoms
     """
@@ -153,4 +161,3 @@ def request_diagnosis():
     response = make_request.request_diagnosisAPI(data)
     response = response.json()
     return jsonify(response)
-

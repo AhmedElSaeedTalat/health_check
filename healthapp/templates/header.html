@@ -34,8 +34,17 @@
 				{% endfor %}
 			</div>
 			{% else %}
-			{{ searchform.name(class="form-control", placeholder="search") }}
+			{{ searchform.name(class="form-control", placeholder="search drug") }}
 			{% endif %}
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			{% for message in messages %}
+			<p class='flashed_search alert alert-danger'>
+				{{ message }}
+			</p>
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
 			</form>					
 		</div>
 	</div>
