@@ -3,7 +3,7 @@
 <div class="container login-container articles-container">
 	<div class="row">
 		<div class="col-md-6">
-			<img src="../static/img/author.jpg" alt="login-image" class='img-fluid'>
+			<img src="{{ url_for('static', filename='img/author.jpg') }}" alt="login-image" class='img-fluid'>
 		</div>
 		<form method='POST' class="col-md-6 col-12"  enctype="multipart/form-data">
     		{{ article_form.hidden_tag() }}

@@ -1,5 +1,5 @@
 $(document).on('click', '.readmore', function () {
-  $('.hidden').text($(this).prev().text()).removeClass('hidden').addClass('visible')
+  $('.hidden').text($(this).prev().text()).removeClass('hidden').addClass('visible');
   $('.hidden_button').removeClass('hidden_button');
   $('.med-article').css({"display": "none"});
 });

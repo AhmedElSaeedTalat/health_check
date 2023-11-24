@@ -95,7 +95,7 @@ button.save_drug {
 .symptoms h3 {
 	margin: 1px 0 6px 0;
 }
-.symptoms ul, h3 {
+.symptoms ul {
 	margin-left: 10px;
 	padding: 0;
 }

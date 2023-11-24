@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="single_article">
+	<article>
+		<div class="image">
+			<img src="{{ url_for('static', filename='img/'+article.image) }}" alt="{{ article.title }}">
+		</div>
+		<h3>
+			{{ article.title }}
+		</h3>
+		<p> {{ article.content }}</p>
+		<span><i>created by: {{ article.title }}</i></span>
+	</article>
+</section>
+{% endblock content %}

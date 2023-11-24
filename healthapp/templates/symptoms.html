@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="symptoms">
-		<img src='../static/img/close_icon.png' class="hidden_button" id="close_diagnosis">
+	<img src="{{ url_for('static', filename='img/close_icon.png') }}" class="hidden_button" id="close_diagnosis">
 		<div class="diagnosis">
 				<h3> Diangosis </h3>
 				<ul id='diagnosis_content'></ul>
@@ -40,7 +40,7 @@
 				</form>
 			</div>
 			<div class="img">
-				<img src='../static/img/diagnosis.jpg' alt='diagnosis'>
+				<img src="{{ url_for('static', filename='img/diagnosis.jpg') }}" alt='diagnosis'>
 			</div>
 	</section>
 	<script>

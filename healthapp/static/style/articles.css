@@ -17,19 +17,37 @@
 	justify-content: space-around;
 	background-color: #10b2ac;
 	color: white;
+	margin: 50px 0px 50px 0;
 }
 .article_index .article{
 	width: 450px;
 }
 .article_index .image{
-	background-image: url('hairstyle.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 420px;
-	width: 420px;
+	display: flex;
+	align-items: center;
+	width: 540px;
+}
+.article_index img {
+	width: 100%;
 	filter: drop-shadow(2px 4px 6px black);
+	margin-bottom: 20px;
 }
 .article_index p{
 	height: 312px;
 	overflow-y: hidden;
+}
+.single_article {
+	display: flex;
+	justify-content: center;
+}
+.single_article article{
+	width: 50%;
+	font-family: emoji;
+}
+.single_article .image{
+	height: 320px;
+}
+.single_article .image img {
+	width: 100%;
+	height: 100%;
 }

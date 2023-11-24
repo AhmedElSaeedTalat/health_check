@@ -2,7 +2,7 @@
 	<div class='container'>
 		<div class="menu">
 			<div>
-				<a href="{{ url_for('home') }}"><img src="../static/img/logo2.jpg" alt="logo"></a>
+				<a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo2.jpg') }}" alt="logo"></a>
 			</div>
 			<ul>
 				<li><a href="{{ url_for('home') }}">home</a></li>

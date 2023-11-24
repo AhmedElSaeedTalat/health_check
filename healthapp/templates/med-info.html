@@ -49,7 +49,7 @@
 	{% endif %}
 {% endfor %}
 {% endif %}
-<img src='../static/img/close_icon.png' class="hidden_button" id="close">
+<img src="{{ url_for('static', filename='img/close_icon.png') }}" class="hidden_button" id="close">
 <article class="hidden med-article-hidden"></article>
 </section>
 </main>

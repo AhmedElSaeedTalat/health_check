@@ -9,9 +9,11 @@ class Article(BaseModel, db.Model):
     __tablename__ = 'article'
     title = db.Column(db.String(255), nullable=False, unique=True)
     content = db.Column(db.Text, nullable=False)
+    image = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, title, content, user_id):
+    def __init__(self, title, content, user_id, image):
         self.title = title
         self.content = content
+        self.image = image
         self.user_id = user_id

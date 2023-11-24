@@ -54,3 +54,16 @@ def display_articleForm():
                                    article_form=article_form)
     else:
         return redirect(url_for('home'))
+
+
+@article_views.route('/articles/<int:id>', strict_slashes=False)
+def display_articles(id=None):
+    """ function to display articles from db """
+    from healthapp.models.articles import Article
+    from healthapp import app
+    if id:
+        article = Article.query.filter_by(id=id).first()
+        return render_template('article.html', article=article)
+    else:
+        articles = Article.query.all()
+        return render_template('articles.html', articles=articles)

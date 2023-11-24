@@ -2,6 +2,7 @@
 from flask import Flask, render_template
 from healthapp.views.users import user_views
 from healthapp.views.drugsView import medicine_views
+from healthapp.views.articlesViews import article_views
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from healthapp.views import index
@@ -16,6 +17,7 @@ dbEnv = os.getenv('db')
 app = Flask(__name__)
 app.register_blueprint(user_views)
 app.register_blueprint(medicine_views)
+app.register_blueprint(article_views)
 url = 'mysql+mysqldb://{}:{}@{}/{}'.format(usr, pwd, host, dbEnv)
 app.config['SQLALCHEMY_DATABASE_URI'] = url
 app.config['SECRET_KEY'] = '9911a688421666c9f6938371a154c590b86459a2aeb01eda'
@@ -33,7 +35,7 @@ def inject_variable():
     """ add form before templates get rendered """
     from healthapp.views.forms import SearchForm
     searchform = SearchForm()
-    return {'searchform': searchform}
+    return {'searchform': searchform, 'app': app}
 
 
 @login_manager.user_loader

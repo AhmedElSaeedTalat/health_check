@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """ main file """
-from flask import render_template, jsonify
-from healthapp.views.forms import SearchForm
-from healthapp.views.drugsView import medicine_views 
-
+from flask import render_template
 
 
 def home():
     """ home view function """
-    return render_template('index.html')
+    from healthapp.models.articles import Article
+    articles = Article.query.order_by(Article.created_at.desc()).limit(2).all()
+    return render_template('index.html', articles=articles)
