@@ -56,6 +56,7 @@ def display_articleForm():
         return redirect(url_for('home'))
 
 
+@article_views.route('/articles', strict_slashes=False)
 @article_views.route('/articles/<int:id>', strict_slashes=False)
 def display_articles(id=None):
     """ function to display articles from db """

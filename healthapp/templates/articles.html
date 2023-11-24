@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% for article in articles %}
+	<section class="article_index">
+	{% if loop.index == 1 %}
+		<article class="article">
+			<h3>
+				{{ article.title }}
+			</h3>
+			<p>{{ article.content }}</p>
+			<a href="{{ url_for('article_views.display_articles', id=article.id) }}" class="link-secondary">Read more</a>
+		</article>
+		<div class="image">
+			<img src="../static/img/{{ article.image }}" alt="article_image" />
+		</div>
+	{% else %}
+		<div class="image">
+			<img src="../static/img/{{ article.image }}" alt="article_image" />
+		</div>
+		<article class="article">
+			<h3>
+				{{ article.title }}
+			</h3>
+			<p>{{ article.content }}</p>
+			<a href="/articles/articles/{{ article.id }}" class="link-secondary">Read more</a>
+		</article>
+	{% endif %}
+</section>
+{% endfor %}
+{% endblock content %}

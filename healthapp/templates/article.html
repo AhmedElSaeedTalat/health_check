@@ -9,7 +9,7 @@
 			{{ article.title }}
 		</h3>
 		<p> {{ article.content }}</p>
-		<span><i>created by: {{ article.title }}</i></span>
+		<span><i>created by: {{ article.user.username }}</i></span>
 	</article>
 </section>
 {% endblock content %}

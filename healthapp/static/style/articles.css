@@ -39,6 +39,7 @@
 .single_article {
 	display: flex;
 	justify-content: center;
+	margin: 30px 0 50px 0;
 }
 .single_article article{
 	width: 50%;
