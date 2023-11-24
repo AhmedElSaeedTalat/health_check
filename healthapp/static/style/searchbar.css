@@ -1,11 +1,16 @@
 body {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 620px;
 	background-image: url('../img/med.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+.logo_searchPage {
+	    height: 175px;
+		margin-bottom: 22px;
 }
 .search {
 	width: 50%;

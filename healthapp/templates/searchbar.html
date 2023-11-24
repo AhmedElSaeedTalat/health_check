@@ -9,6 +9,9 @@
 		<title>Document</title>
 	</head>
 <body>
+	<div>
+		<a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo2.jpg') }}" alt="logo" class="logo_searchPage"></a>
+	</div>
 	<form class="search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
 		{{ searchform.csrf_token(id = "unique_id") }}
 		{% if searchform.name.errors %}
