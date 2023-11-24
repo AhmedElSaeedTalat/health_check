@@ -39,7 +39,6 @@ def display_articleForm():
             content = article_form.content.data
             user_id = current_user.id
             image = save_image(article_form.image.data)
-            print('heeeeeeeeeeey image name: ', image)
             article = Article(title=title, content=content,
                               image=image, user_id=user_id)
             db.session.add(article)

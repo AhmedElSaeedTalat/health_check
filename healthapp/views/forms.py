@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField
-from wtforms import IntegerField
+from flask_wtf.file import FileField, FileAllowed
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms import TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from wtforms.validators import ValidationError
 
@@ -42,3 +43,11 @@ class SearchForm(FlaskForm):
     """ flask search """
     name = StringField('Name', validators=[DataRequired()])
     search = SubmitField('Search')
+
+
+class ArticleForm(FlaskForm):
+    """ form to add a new article """
+    title = StringField('Title', validators=[DataRequired(), Length(min=6)])
+    content = TextAreaField('Content', validators=[DataRequired()])
+    image = FileField('Image', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Add article')
