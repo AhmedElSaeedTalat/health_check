@@ -47,15 +47,23 @@ class MakeRequests:
 
     def request_listSymptoms(self):
         """ function to list symptoms """
-        token = self.request_token()
+        try:
+            token = self.request_token()
+        except requests.exceptions.RequestException:
+            return 'failure'
         url = 'https://sandbox-healthservice.priaid.ch/symptoms'
         headers = {'autherization': token, 'content-type': 'application/json'}
         params = {'token': token, 'language': 'en-gb'}
         return requests.get(url, params=params, headers=headers)
 
+    @retry(stop=stop_after_attempt(3), wait=wait_exponential())
     def request_diagnosisAPI(self, data):
         """ with args passed diangnosis request is made """
-        token = self.request_token()
+        try:
+            token = self.request_token()
+        except requests.exceptions.RequestException:
+            response = 'failure'
+            return response
         url = 'https://sandbox-healthservice.priaid.ch/diagnosis'
         symptoms = json.dumps(data['symptoms'])
         headers = {'autherization': token, 'content-type': 'application/json'}
@@ -144,6 +152,9 @@ def health_check():
         return render_template('symptoms.html', symptoms=symptoms)
     else:
         symptoms = req.request_listSymptoms()
+        if symptoms == 'failure':
+            flash('request failed please try again later')
+            return redirect(url_for('home'))
         symptoms = symptoms.json()
         session['symptoms'] = symptoms
         return render_template('symptoms.html', symptoms=symptoms)
@@ -159,5 +170,7 @@ def request_diagnosis():
     data = request.get_json()
     make_request = MakeRequests()
     response = make_request.request_diagnosisAPI(data)
+    if response == 'failure':
+        return 'failed'
     response = response.json()
     return jsonify(response)

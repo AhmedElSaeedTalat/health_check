@@ -132,6 +132,9 @@ button.save_drug {
 .no_diagnosis {
 	display: none;
 }
+.request_error {
+	display: none;
+}
 @media only screen and (max-width: 600px) {
 	.symptoms .img {
 		width: 310px;

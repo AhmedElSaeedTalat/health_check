@@ -36,6 +36,7 @@
 					  </div>
 					<span id='symptom_warning' class='alert alert-danger'>please select the symptoms</span>
 					<span class='alert alert-danger no_diagnosis'>no diagnosis found for these symptoms, please check another ones</span>
+					<span class='alert alert-danger request_error'>requests can not be made at the moment please try again later</span>
 				  <button type="submit" class="btn symp-btn">Submit</button>
 				</form>
 			</div>
@@ -80,6 +81,10 @@ $('.form-symptoms button').click(function(e){
     },
     body: JSON.stringify(data)
   }).then(r => r.text()).then(data => {
+    if (data === 'failed') {
+		$('.request_error').css({'display': 'block'});
+		return;
+	}
     data = JSON.parse(data);
     if (data.length > 0) {
       $('.diagnosis').css({'display': 'block'});
