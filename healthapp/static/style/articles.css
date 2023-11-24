@@ -1,0 +1,35 @@
+.articles-container {
+}
+.articles-container h3 {
+	font-size: 17px;
+	margin: 0 0 7px 0;
+}
+
+.articles-container img {
+	filter: drop-shadow(2px 4px 6px black);
+	margin-bottom: 10px;
+	width: 540px;
+}
+.article_index {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	justify-content: space-around;
+	background-color: #10b2ac;
+	color: white;
+}
+.article_index .article{
+	width: 450px;
+}
+.article_index .image{
+	background-image: url('hairstyle.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 420px;
+	width: 420px;
+	filter: drop-shadow(2px 4px 6px black);
+}
+.article_index p{
+	height: 312px;
+	overflow-y: hidden;
+}
