@@ -87,6 +87,7 @@ def display_med():
             flash('request error for the moment please try again later',
                   'med_error')
             return redirect(url_for('home'))
+        session['drug_name'] = name
         data = {'status': status, 'data': data, 'name': name}
         session['data'] = data
         return redirect(url_for('medicine_views.show_data'))
@@ -111,7 +112,21 @@ def show_data():
         show received data from session from the
         redirected post form
     """
-    data = session.get('data')
+    from healthapp.models.users import User
+    if current_user.is_authenticated:
+        user = User.query.filter_by(id=current_user.id).first()
+        related_drugs = user.drugs
+        drugs = []
+        for drug in related_drugs:
+            drugs.append(drug.name)
+        save_button = ""
+        if session['drug_name'] in drugs:
+            save_button = 'hidden'
+    drug = session.get('data')
+    if current_user.is_authenticated:
+        data = {'drug': drug, 'save': save_button}
+    else:
+        data = {'drug': drug, 'save': ""}
     return render_template('med-info.html', data=data)
 
 
