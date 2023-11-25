@@ -111,6 +111,10 @@ def show_data():
     """
         show received data from session from the
         redirected post form
+        -- first I check if drug's namesearched is saved
+        in db to see if I hide or show save drub button
+        -- second I retrieve saved data in session for drug
+        searched and pass it to template
     """
     from healthapp.models.users import User
     if current_user.is_authenticated:
