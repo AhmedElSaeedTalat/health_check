@@ -53,7 +53,7 @@ def saved_drugs():
     """ route to return list of saved drugs """
     from healthapp.models.users import User
     user = User.query.filter_by(id=current_user.id).first()
-    related_drugs = user.drugs
+    related_drugs = user.drug
     list_drugs = []
     for drug in related_drugs:
         list_drugs.append(drug.name)

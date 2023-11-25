@@ -52,3 +52,10 @@
 	width: 100%;
 	height: 100%;
 }
+.no_articles {
+	min-height: 34vw;
+}
+.no_articles p {
+	margin: 22px 0px 0px 22px;
+	font-size: 1.5em;
+}

@@ -6,7 +6,11 @@
 			</div>
 			<ul>
 				<li><a href="{{ url_for('home') }}">home</a></li>
-				<li><a href="#">about</a></li>
+				{% if current_user.is_authenticated %}
+				{% if current_user.role == 'author' %}
+				<li><a href="{{ url_for('article_views.display_articleForm') }}">add article</a></li>
+				{% endif %}
+				{% endif %}
 				{% if current_user.is_authenticated %}
 				<li id='my_drugs'>my drugs
 				<div class="list_drugs"></div></li>
@@ -93,6 +97,8 @@ $('.list_drugs').on('click', 'li', function() {
 	}).then(r => r.text()).then(data => {
 	  if (data == 'success') {
 		  window.location.replace("{{ url_for('medicine_views.show_data') }}");
+	  } else {
+		  alert('cant obtain data at the moment')
 	  }
 	})
   });

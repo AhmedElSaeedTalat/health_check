@@ -47,7 +47,7 @@ nav .container .menu ul{
 }
 nav .container .menu ul li {
 	background-color: #10b2ac;
-    min-width: 70px;
+    min-width: 78px;
     height: 30px;
     border-radius: 4px;
     margin-right: 5px;
@@ -177,4 +177,13 @@ footer a:hover {
 	background-color: #11b2ac;
 	color: white;
 	margin: 5px 9px 10px 0;
+}
+/* 404 not found */
+.page404 {
+	min-height: 34vw;
+}
+.page404 div {
+	font-size: 2em;
+	font-family: emoji;
+	margin: 31px 0px 0px 35px;
 }

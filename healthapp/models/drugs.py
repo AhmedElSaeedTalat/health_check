@@ -15,10 +15,9 @@ class Drug(BaseModel, db.Model):
     """ class meds models """
     __tablename__ = 'drug'
     name = db.Column(db.String(255), nullable=False)
-    users = db.relationship('User', secondary=users_drugs, lazy='subquery',
-                            backref=db.backref('drug', lazy=True))
+    user = db.relationship('User', secondary=users_drugs, back_populates="drug")
 
-    def __init__(self, name, users):
+    def __init__(self, name, user):
         """ init class """
         self.name = name
-        self.users = users
+        self.user = user

@@ -100,6 +100,8 @@ def get_details():
     name = request.get_json()
     fda_request = MakeRequests()
     status, data = fda_request.request_fda(name['name'])
+    if status == 500:
+        return 'failure'
     data = {'status': status, 'data': data, 'name': name}
     session['data'] = data
     if status == 200:
@@ -119,7 +121,7 @@ def show_data():
     from healthapp.models.users import User
     if current_user.is_authenticated:
         user = User.query.filter_by(id=current_user.id).first()
-        related_drugs = user.drugs
+        related_drugs = user.drug
         drugs = []
         for drug in related_drugs:
             drugs.append(drug.name)
@@ -146,7 +148,7 @@ def save_drug():
         if data:
             try:
                 user = User.query.filter_by(id=current_user.id).first()
-                drug = Drug(name=data, users=[user])
+                drug = Drug(name=data, user=[user])
                 db.session.add(drug)
                 db.session.commit()
                 return 'success'

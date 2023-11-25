@@ -14,11 +14,12 @@ class User(BaseModel, db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(150), default='client')
-    drugs = db.relationship('Drug', secondary=users_drugs, lazy='subquery',
-                            backref=db.backref('user', lazy=True))
+    drug = db.relationship('Drug', secondary=users_drugs,
+                           back_populates="user")
     article = db.relationship('Article', backref='user')
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, role=""):
         self.username = username
         self.email = email
         self.password = password
+        self.role = role
