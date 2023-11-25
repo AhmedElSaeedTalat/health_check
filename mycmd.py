@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """ cmd for the Project """
 import cmd
-from healthapp import app, db
+from healthapp import db
+from healthapp.runapp import app
 from healthapp.models.users import User
 from flask_bcrypt import Bcrypt
 
