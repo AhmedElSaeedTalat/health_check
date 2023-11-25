@@ -16,7 +16,7 @@ def save_image(image_file):
     function to save image in path, and renaming file name using
     secrets
     """
-    from healthapp import app
+    from healthapp.runapp import app
     random_name = secrets.token_hex(8)
     _, extention = os.path.splitext(image_file.filename)
     image_name = random_name + extention
@@ -61,7 +61,7 @@ def display_articleForm():
 def display_articles(id=None):
     """ function to display articles from db """
     from healthapp.models.articles import Article
-    from healthapp import app
+    from healthapp.runapp import app
     if id:
         article = Article.query.filter_by(id=id).first()
         return render_template('article.html', article=article)
