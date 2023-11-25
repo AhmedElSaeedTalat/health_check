@@ -84,7 +84,8 @@ def display_med():
         fda_request = MakeRequests()
         status, data = fda_request.request_fda(name)
         if status == 500:
-            flash('request error for the moment please try again later')
+            flash('request error for the moment please try again later',
+                  'med_error')
             return redirect(url_for('home'))
         data = {'status': status, 'data': data, 'name': name}
         session['data'] = data

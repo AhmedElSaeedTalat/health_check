@@ -44,7 +44,7 @@ def login():
             login_user(user)
             return redirect(url_for('home'))
         else:
-            flash('email or password isnt correct')
+            flash('email or password isnt correct', 'login')
     return render_template('login.html', form=form)
 
 
