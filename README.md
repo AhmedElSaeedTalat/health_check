@@ -1,7 +1,3 @@
-## Project Title
-
-Health Check
-
 ## Table of contents
 1. [Description](#description)
 2. [Services provided](#services-provided)
