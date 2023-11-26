@@ -41,7 +41,7 @@ $ Move to the project directory: `cd health_check`
 $ Run the app: `python3 -m healthapp.runapp`
 
 ## Create author
-**To create a new author run mycmd module:**
+**To create a new author run mycmd module:**  
 $ Run the cmd: `python3 -m mycmd`  
 $ Use command: `create_author`   
 $ A prompt will appear to add the username, email, and password  
