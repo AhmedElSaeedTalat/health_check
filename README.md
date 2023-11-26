@@ -16,7 +16,7 @@ Health Check is a web application developed to provide varios services. The web 
 3. Articles. the site provides large range of Articles with medicine related topics, with the ability of adding Articles if the user has a role of an author. 
 
 ## routes
-**three different main routes include:**  
+**Three different main routes include:**  
 1. '/medicines'  
     '/medicines/health-checker': url that detremines the symptoms
 2. '/user'  
