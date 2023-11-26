@@ -37,7 +37,6 @@ A list of technologies used within the project:
 
 ## Installation
 $ Clone the repository: `git clone https://github.com/AhmedElSaeedTalat/health_check.git`  
-$ Move to the app directory: `cd healthapp`  
 $ Run the app: `python3 -m healthapp.runapp`
 
 ## Create author
