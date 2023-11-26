@@ -233,7 +233,7 @@ def test_addingArticles(client, app):
                 }
         client.post(url_for('user_views.register'), data=data,
                     follow_redirects=True)
-        """ making a post request to add an article """
+        """ making a post request to add an while being author article """
         data = {
                 'title': 'test title',
                 'content': 'test content',
@@ -248,3 +248,4 @@ def test_addingArticles(client, app):
         user = article.user
         assert article.title == 'test title'
         assert user.id == 1
+        assert b'<p>test content</p>' in response.data
