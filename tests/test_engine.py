@@ -112,7 +112,24 @@ def test_saveDrug(client, app):
 def test_display_symptoms(client, app):
     """ test retrieving symptoms form"""
     with app.app_context():
+        """ test display page """
         response = client.get(url_for('medicine_views.health_check'),
                               follow_redirects=True)
         assert response.status_code == 200
         assert b'<label for="select_options">please select your symptoms</label>' in response.data
+        """ test post in form for diagnosis """
+        data = {
+                'year': '1992',
+                'gender': 'male',
+                'symptoms': [238]
+                }
+        data = json.dumps(data)
+        headers = {'Content-Type': 'application/json'}
+        response = client.post(url_for('medicine_views.request_diagnosis'),
+                               headers=headers,
+                               data=data,
+                               follow_redirects=True)
+        assert response.status_code == 200
+        response = response.data.decode('utf-8')
+        response = json.loads(response)
+        assert 'Issue' in response[0]
