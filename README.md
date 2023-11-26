@@ -8,7 +8,7 @@
 7. [Author](#author)
 
 ## Description:
-Health Check is a web application developed to provide varios services. The web application uses varios API to request data for multiple sites at the same time.
+Health Check is a web application developed to provide varios services. The web application uses varios API to request data from multiple sites at the same time.
 
 ## Services provided
 1. Data about different drugs that were approved by fda. this information includes Description, Precaustions, and instructions to use. 
