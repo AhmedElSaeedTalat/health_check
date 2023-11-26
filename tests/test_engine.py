@@ -31,6 +31,29 @@ def test_registration(client, app):
         user = User.query.first()
         assert user.email == 'jordan@mail.com'
         assert b'<li>Jordan</li>' in response.data
+        """ test user names exists """
+        client.get(url_for('user_views.logout'), follow_redirects=True)
+        data = {
+                'username': 'Jordan',
+                'email': 'jordan@mail.com',
+                'password': '123456',
+                'confirm_password': '123456',
+                }
+        response = client.post(url_for('user_views.register'), data=data,
+                               follow_redirects=True)
+        assert b'<span> username exists, please use another user </span>'
+        """ test password not repeated the same """
+        client.get(url_for('user_views.logout'), follow_redirects=True)
+        data = {
+                'username': 'ahmed',
+                'email': 'ahmed@mail.com',
+                'password': '123456',
+                'confirm_password': '1243456',
+                }
+        response = client.post(url_for('user_views.register'), data=data,
+                               follow_redirects=True)
+        assert b'<span> Field must be equal to \
+password. </span>' in response.data
 
 
 def test_login(client, app):
@@ -89,7 +112,8 @@ def test_invalid_password(client, app):
                    }
         response = client.post(url_for('user_views.login'), data=new_data)
         assert response.status_code == 200
-        assert b'<p class="alert alert-danger"> email or password isnt correct</p>' in response.data
+        assert b'<p class="alert alert-danger"> email or password \
+isnt correct</p>' in response.data
 
 
 def test_search(client, app):
