@@ -47,7 +47,7 @@ $ Use command: `create_author`
 $ A prompt will appear to add the username, email, and password  
 * username:  
 * email:  
-* password:  
+* password:   
 $ Use quit command to quiet `quit`  
 
 ## Author:
