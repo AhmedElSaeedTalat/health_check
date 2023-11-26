@@ -9,7 +9,8 @@ import json
 def test_home(client):
     """ test home page """
     response = client.get('/')
-    assert b'<link type="text/css" rel="stylesheet" href="/static/style/main.css">' in response.data
+    assert b'<link type="text/css" rel="stylesheet" \
+href="/static/style/main.css">' in response.data
 
 
 def test_registration(client, app):
@@ -147,3 +148,11 @@ def test_display_symptoms(client, app):
         response = response.data.decode('utf-8')
         response = json.loads(response)
         assert 'Issue' in response[0]
+
+
+def test_pageNotFound(client, app):
+    """ to test that page isn't found """
+    with app.app_context():
+        response = client.get('/fake_url')
+        assert b'<p> this url is not active please use a \
+valid url 404</p>' in response.data
