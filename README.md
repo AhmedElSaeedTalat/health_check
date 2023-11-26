@@ -46,7 +46,6 @@ $ Run the app: `python3 -m healthapp.runapp`
 
 ## Create author
 **To create a new author run mycmd module:**
-Creating aut  
 $ Run the cmd: `python3 -m mycmd`  
 $ Use command: `create_author`   
 $ A prompt will appear to add the username, email, and password  
