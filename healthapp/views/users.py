@@ -34,7 +34,7 @@ def register():
 def login():
     """ route to login user """
     if current_user.is_authenticated:
-        return redirect(url_for('user_views.profile'))
+        return redirect(url_for('home'))
     from healthapp.models.users import User
     form = Login()
     if form.validate_on_submit():
