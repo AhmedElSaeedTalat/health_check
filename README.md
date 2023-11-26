@@ -31,7 +31,7 @@ three different main routes include:
 A list of technologies used within the project:  
 * Flask: Version 3.0.0
 * Python: Version 3.8.10 
-* FLASKFORM, FLASKLOGIN
 * REDIS: Version 5.0.7
 * MYSQL: Version  8.0.35
+* FLASKFORM, FLASKLOGIN
 * HTML, CSS, JS, JQUERY
