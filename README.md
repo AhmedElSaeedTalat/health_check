@@ -1,14 +1,15 @@
-# Project Title
+## Project Title
 
-Myhealth
+Health Check
 
 ## Table of contents
 1. [Description](#description)
 2. [Services provided](#services-provided)
 3. [Routes](#routes)
+4. [Technologies](#technologies)
 
 ## Description:
-Myhealth is a web application developed to provide varios services. The web application uses varios API to request data for multiple sites at the same time.
+Health Check is a web application developed to provide varios services. The web application uses varios API to request data for multiple sites at the same time.
 
 ## Services provided
 1. Data about different drugs that were approved by fda. this information includes Description, Precaustions, and instructions to use. 
@@ -25,3 +26,12 @@ three different main routes include:
 3. '/articles'
     '/articles/articles': for all articles
     '/articles/articles/id': for a specific article
+
+## Technologies
+A list of technologies used within the project:  
+* Flask: Version 3.0.0
+* Python: Version 3.8.10 
+* FLASKFORM, FLASKLOGIN
+* REDIS: Version 5.0.7
+* MYSQL: Version  8.0.35
+* HTML, CSS, JS, JQUERY
