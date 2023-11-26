@@ -2,6 +2,7 @@
 """ write test cases """
 from healthapp.models.users import User
 from healthapp.models.drugs import Drug
+from healthapp.models.articles import Article
 from flask import url_for
 import json
 
@@ -57,6 +58,38 @@ def test_login(client, app):
                                follow_redirects=True)
         assert response.status_code == 200
         assert b'<li>Jordan</li>' in response.data
+
+        """ log out and test invalid email """
+        client.get(url_for('user_views.logout'), follow_redirects=True)
+        data = {
+                'email': 'jordan',
+                'password': '123456',
+                }
+        response = client.post(url_for('user_views.login'), data=data,
+                               follow_redirects=True)
+        assert b'<span> Invalid email address. </span>' in response.data
+
+
+def test_invalid_password(client, app):
+    """ log out and test invalid password """
+    with app.app_context():
+        client.get(url_for('user_views.logout'), follow_redirects=True)
+        data = {
+                'username': 'Micheal adam',
+                'email': 'micheal@mail.com',
+                'password': '123456',
+                'confirm_password': '123456',
+                }
+        client.post(url_for('user_views.register'), data=data,
+                    follow_redirects=True)
+        client.get(url_for('user_views.logout'), follow_redirects=True)
+        new_data = {
+                    'email': 'micheal@mail.com',
+                    'password': 'kjsdhfksdflal',
+                   }
+        response = client.post(url_for('user_views.login'), data=new_data)
+        assert response.status_code == 200
+        assert b'<p class="alert alert-danger"> email or password isnt correct</p>' in response.data
 
 
 def test_search(client, app):
@@ -156,3 +189,38 @@ def test_pageNotFound(client, app):
         response = client.get('/fake_url')
         assert b'<p> this url is not active please use a \
 valid url 404</p>' in response.data
+
+
+def test_addingArticles(client, app):
+    """ function to test adding articles """
+    with app.app_context():
+        """
+            test visitig adding article page when not author
+            result: should be redirect
+        """
+        response = client.get(url_for('article_views.display_articleForm'))
+        assert response.status_code == 302
+        data = {
+                'username': 'Jordan',
+                'email': 'jordan@mail.com',
+                'password': '123456',
+                'confirm_password': '123456',
+                'role': 'author'
+                }
+        client.post(url_for('user_views.register'), data=data,
+                    follow_redirects=True)
+        """ making a post request to add an article """
+        data = {
+                'title': 'test title',
+                'content': 'test content',
+                'image': (open('2.png', 'rb'), '2.png')}
+        response = client.post(url_for('article_views.display_articleForm'),
+                               data=data,
+                               content_type='multipart/form-data',
+                               follow_redirects=True
+                               )
+        assert response.status_code == 200
+        article = Article.query.first()
+        user = article.user
+        assert article.title == 'test title'
+        assert user.id == 1
