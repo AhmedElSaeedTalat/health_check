@@ -1,3 +1,5 @@
+// show all article of drugs when read more is clicked
+// file used is med-info.html
 $(document).on('click', '.readmore', function () {
   $('.hidden').text($(this).prev().text()).removeClass('hidden').addClass('visible');
   $('.hidden_button').removeClass('hidden_button');
