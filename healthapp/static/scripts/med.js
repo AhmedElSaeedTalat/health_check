@@ -12,6 +12,8 @@ $('#close').click(function () {
 // function to show diagnosis when symptoms are selected
 $('.form-symptoms button').click(function(e){
   e.preventDefault();
+  // show loading image in symptoms.html
+  $('.load_img_symptoms').css({'display': 'inline-block'});
   // get data from form
   const date_birth = $('#age').val();
   if (date_birth == "") {
@@ -46,6 +48,9 @@ $('.form-symptoms button').click(function(e){
     },
     body: JSON.stringify(data)
   }).then(r => r.text()).then(data => {
+    // hide loading image when respone is visible
+	$('.load_img_symptoms').css({'display': 'none'});
+    // show error message if request failed
     if (data === 'failed') {
 		$('.request_error').css({'display': 'block'});
 		return;
@@ -88,7 +93,9 @@ $('#close_diagnosis').click(function() {
 
 // show load image when form subimtted
 $('.searchme_drug').click(function () {
-  $('.load_img').css({'display': 'block'});
+  if ($('#name').val() != "") {
+    $('.load_img').css({'display': 'block'});
+  }
 });
 
 

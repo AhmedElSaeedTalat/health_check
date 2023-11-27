@@ -94,6 +94,12 @@ nav ul li {
 	border-radius: 50px;
 	animation: rotateme 3s infinite;
 }
+.load_img_symptoms {
+	display: none;
+	height: 70px;
+	border-radius: 50px;
+	animation: rotateme 3s infinite;
+}
 @keyframes rotateme {
 	50% {transform: rotateY(180deg);}
 }
