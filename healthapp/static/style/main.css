@@ -53,6 +53,9 @@ nav .container .menu ul li {
     margin-right: 5px;
     text-align: center;
 }
+ nav .container .menu ul li:hover {
+	background-color: #22a19f;
+ }
 .menu ul li:nth-child(3) {
 	position: relative;
 }

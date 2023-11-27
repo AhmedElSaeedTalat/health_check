@@ -104,3 +104,42 @@ $('.search .btn').click(function() {
 		}
 	)
 });
+
+
+// get list of drugs when hovered over the clicked button
+let response;
+$('#my_drugs').on("mouseover", function() {
+  if (response) {
+    $('.list_drugs').css({"display": "block"});
+    return
+  }
+  $.get("/user/saved-drug", function (data, textSatus){
+    response = data
+    for (let i = 0; i < data.length; i++) {
+      $('.list_drugs').append(`<li>${data[i]}</li>`)
+    }
+  });
+});
+
+// hide list of drugs when not hovered over the button
+$('#my_drugs').mouseout(function() {
+	$('.list_drugs').css({"display": "none"});
+});
+// request data of clicked drug from the list
+// and redirect to another page with the data
+$('.list_drugs').on('click', 'li', function() {
+  const search_data = $(this).text();
+	fetch("/medicines/drug-deatails", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({name: search_data})
+	}).then(r => r.text()).then(data => {
+	  if (data == 'success') {
+		  window.location.replace("/medicines/display-med");
+	  } else {
+		  alert('cant obtain data at the moment')
+	  }
+	})
+  });
