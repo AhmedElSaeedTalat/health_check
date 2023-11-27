@@ -142,4 +142,22 @@ $('.list_drugs').on('click', 'li', function() {
 		  alert('cant obtain data at the moment')
 	  }
 	})
-  });
+});
+
+// send a request on click to save a drug name on db
+// based on name of drug clicked on, if success received
+// alert is sent
+$('.save_drug').click(function() {
+    const name = $('#drug_name').val()
+	fetch("/medicines/save-drug", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify(name)}).then(res => res.text()).then(data => {
+			if (data == "success") {
+				alert('successfully added the drug to list of faviourite')
+				$('.save_drug').css({'display': 'none'})
+			}
+	  });
+});

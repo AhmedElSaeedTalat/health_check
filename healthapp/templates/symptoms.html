@@ -8,43 +8,40 @@
 				<h3> Related Specialisation </h3>
 				<ul id='specialisation'> </ul>
 		</div>
-			<div class="form-symptoms">
-				<h3>suffer from of any symptoms</h3>
-				<form method="POST" action="google.com">
-				  <div class="form-group">
-				    <label for="gender">Gender</label>
+		<div class="form-symptoms">
+			<h3>suffer from of any symptoms</h3>
+			<form method="POST" action="google.com">
+				<div class="form-group">
+					<label for="gender">Gender</label>
 					<select class="form-control" id="gender" required>
 						<option>male</option>
 						<option>female</option>
 					</select>
-				  </div>
-				  <span id='gender_warning' class='alert alert-danger'> please select the gender </span>
-				  <div class="form-group">
-				    <label for="age">Date of birth</label>
-				    <input type="date" class="form-control" id="age" placeholder="date of birth" required>
-				  </div>
-					<span id='birth_warning' class='alert alert-danger'>please select your date of birth</span>
-				    <div class="form-group">
-					    <label for="select_options">please select your symptoms</label>
-					    <select multiple class="form-control" id="select_options" required>
-						{% if symptoms %}
-						{% for symptom in symptoms %}
+				</div>
+				<span id='gender_warning' class='alert alert-danger'> please select the gender </span>
+				<div class="form-group">
+					<label for="age">Date of birth</label>
+					<input type="date" class="form-control" id="age" placeholder="date of birth" required>
+				</div>
+				<span id='birth_warning' class='alert alert-danger'>please select your date of birth</span>
+				<div class="form-group">
+					<label for="select_options">please select your symptoms</label>
+					<select multiple class="form-control" id="select_options" required>
+					{% if symptoms %}
+					{% for symptom in symptoms %}
 						<option idvalue="{{symptom.ID}}" id="option">{{symptom.Name}}</option>
-						{% endfor %}
-						{% endif %}
-					    </select>
-					  </div>
-					<span id='symptom_warning' class='alert alert-danger'>please select the symptoms</span>
-					<span class='alert alert-danger no_diagnosis'>no diagnosis found for these symptoms, please check another ones</span>
-					<span class='alert alert-danger request_error'>requests can not be made at the moment please try again later</span>
-				  <button type="submit" class="btn symp-btn">Submit</button>
-				</form>
-			</div>
-			<div class="img">
-				<img src="{{ url_for('static', filename='img/diagnosis.jpg') }}" alt='diagnosis'>
-			</div>
-	</section>
-	<script>
-</script>
+					{% endfor %}
+					{% endif %}
+					</select>
+				</div>
+				<span id='symptom_warning' class='alert alert-danger'>please select the symptoms</span>
+				<span class='alert alert-danger no_diagnosis'>no diagnosis found for these symptoms, please check another ones</span>
+				<span class='alert alert-danger request_error'>requests can not be made at the moment please try again later</span>
+				<button type="submit" class="btn symp-btn">Submit</button>
+			</form>
+		</div>
+		<div class="img">
+			<img src="{{ url_for('static', filename='img/diagnosis.jpg') }}" alt='diagnosis'>
+		</div>
+</section>
 {% endblock %}
-
