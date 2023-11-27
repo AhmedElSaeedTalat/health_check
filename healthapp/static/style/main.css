@@ -81,6 +81,20 @@ nav ul li {
     color: white;
     margin-right: 10px;
 }
+.load_img {
+	display: none;
+	height: 70px;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	z-index: 10;
+	border-radius: 50px;
+	animation: rotateme 3s infinite;
+}
+@keyframes rotateme {
+	50% {transform: rotateY(180deg);}
+}
+
 @media only screen and (max-width: 600px) {
 	nav ul {
 	}

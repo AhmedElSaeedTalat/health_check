@@ -31,7 +31,7 @@
 			{% if searchform.csrf_token %}
 			{{ searchform.csrf_token(id = "unique_id") }}
 			{% endif %}
-			{{ searchform.search(class="btn") }}
+			{{ searchform.search(class="btn searchme_drug") }}
 			{% if searchform.name.errors %}
 			{{ searchform.name(class="form-control is-invalid") }}
 			<div class="invalid-feedback">
@@ -53,6 +53,7 @@
 			{% endfor %}
 			{% endif %}
 			{% endwith %}
+			<img src="{{ url_for('static', filename='img/drLoad.jpg') }}" class='load_img' alt='load image'>
 			</form>					
 		</div>
 	</div>
@@ -68,6 +69,7 @@ $(document).ready(function(){
   });
 });
 {% endif %}
+
 // get list of drugs when hovered over the clicked button
 let response;
 $('#my_drugs').on("mouseover", function() {

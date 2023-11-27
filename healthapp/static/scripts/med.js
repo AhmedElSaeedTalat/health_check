@@ -85,3 +85,22 @@ $('#close_diagnosis').click(function() {
   $('.form-symptoms').css({'display': 'block'});
   $('.img').css({'display': 'block'});
 });
+
+// show load image when form subimtted
+$('.searchme_drug').click(function () {
+  $('.load_img').css({'display': 'block'});
+});
+
+
+// add the animate rotatin to logo when loading in search page
+$('.search .btn').click(function() {
+	$('.logo_searchPage').animate(
+		{deg: 180},
+		{
+			duration: 1200,
+			step: function(now) {
+				$(this).css({ transform: 'rotateY(' + now + 'deg)' });
+			}
+		}
+	)
+});
