@@ -117,22 +117,22 @@ $('.search .btn').click(function() {
 
 // get list of drugs when hovered over the clicked button
 let response;
-$('#my_drugs').on("mouseover", function() {
+$('.menu #my_drugs').on("mouseover", function() {
   if (response) {
-    $('.list_drugs').css({"display": "block"});
+    $('.menu .list_drugs').css({"display": "block"});
     return
   }
   $.get("/user/saved-drug", function (data, textSatus){
     response = data
     for (let i = 0; i < data.length; i++) {
-      $('.list_drugs').append(`<li>${data[i]}</li>`)
+      $('.menu .list_drugs').append(`<li>${data[i]}</li>`)
     }
   });
 });
 
 // hide list of drugs when not hovered over the button
 $('#my_drugs').mouseout(function() {
-	$('.list_drugs').css({"display": "none"});
+	$('.menu .list_drugs').css({"display": "none"});
 });
 // request data of clicked drug from the list
 // and redirect to another page with the data
@@ -169,4 +169,37 @@ $('.save_drug').click(function() {
 				$('.save_drug').css({'display': 'none'})
 			}
 	  });
+});
+
+$('.list_menu_tabs #my_drugs').click(function() {
+  $('.list_menu_tabs .list_drugs').css({"background-color": "#11b2ac"});
+});
+// for mobile screens click icon to show tabs 
+$('.list_icon').click(function () {
+  if ($('.list_menu_tabs').css('display') === 'none') {
+  	$('.list_menu_tabs').css({'display': 'block'});
+  } else {
+    $('.list_menu_tabs').css({'display': 'none'});
+    $('.list_menu_tabs .list_drugs').css({"display": "none"});
+  }
+});
+
+// get list of drugs when clicked button on mobile screens
+let response_tabs;
+$('#my_drugs_tabs').on("click", function() {
+  if (!response_tabs) {
+    $.get("/user/saved-drug", function (data, textSatus){
+      response_tabs = data
+      for (let i = 0; i < data.length; i++) {
+        $('.list_menu_tabs .list_drugs').append(`<li>${data[i]}</li>`)
+    	}
+  	});
+    $('.list_menu_tabs .list_drugs').css({"display": "block"});
+  } else {
+    if ($('.list_menu_tabs .list_drugs').css("display") === "none") {
+    	$('.list_menu_tabs .list_drugs').css({"display": "block"});
+    } else {
+    	$('.list_menu_tabs .list_drugs').css({"display": "none"});
+       }
+  }
 });

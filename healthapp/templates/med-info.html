@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content%}
-i{% if data.drug.status == 404 %}
+{% if data.drug.status == 404 %}
 <span>no results look for another med</span>
 {% else %}
 <main id='drugs'>

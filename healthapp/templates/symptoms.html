@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<main class='symptoms_wrapper'>
 <section class="symptoms">
 	<img src="{{ url_for('static', filename='img/close_icon.png') }}" class="hidden_button" id="close_diagnosis">
 		<div class="diagnosis">
@@ -45,4 +46,5 @@
 			<img src="{{ url_for('static', filename='img/diagnosis.jpg') }}" alt='diagnosis'>
 		</div>
 </section>
+</main>
 {% endblock %}

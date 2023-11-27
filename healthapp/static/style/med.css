@@ -20,7 +20,7 @@
 article.med-article {
     border: 3px solid #11b2ac;
     border-radius: 5px;
-    margin: 25px 15px 0px 0px;
+    margin: 25px 15px 0px 15px;
 	width: 400px;
     padding: 15px;
 }
@@ -120,6 +120,14 @@ button.save_drug {
 	border-radius: 5px;
 	padding: 15px;
 }
+@media only screen and (max-width: 600px) {
+	.diagnosis {
+		width: 70%;
+	}
+	#close_diagnosis {
+		right: 2%;
+	}
+}
 .form-symptoms select {
 	margin-bottom: 10px;
 }
@@ -142,6 +150,12 @@ button.save_drug {
 	.form-symptoms {
 		width: 310px;
 	}
+	article.med-article-hidden {
+		width: 80%;
+	}
+	#close {
+		right: 4%;
+	}
 }
 @media only screen and (max-width: 300px) {
 	.symptoms .img {
@@ -149,5 +163,22 @@ button.save_drug {
 	}
 	.form-symptoms {
 		width: 250px;
+	}
+}
+@media only screen and (min-width: 430px) and (max-width: 1024px) {
+	.symptoms_wrapper {
+		min-height: 100vw;
+	}
+	.diagnosis {
+		width: 50%;
+	}
+	#close_diagnosis {
+		right: 20%;
+	}
+	#drugs {
+		min-height: 104vw;
+	}
+	article.med-article-hidden {
+		width: 60%;
 	}
 }

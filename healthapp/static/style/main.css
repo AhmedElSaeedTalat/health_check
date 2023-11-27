@@ -42,8 +42,7 @@ nav .container .menu ul{
 	margin: 0;
 	position: absolute;
     bottom: -8px;
-    left: 107px;
-	width: 303px;
+	left: 175px;
 }
 nav .container .menu ul li {
 	background-color: #10b2ac;
@@ -60,7 +59,7 @@ nav .container .menu ul li {
 	position: relative;
 }
 #my_drugs {
-	display: none;
+	/* display: none; */
 }
 .list_drugs {
 	position: absolute;
@@ -100,6 +99,53 @@ nav ul li {
 	border-radius: 50px;
 	animation: rotateme 3s infinite;
 }
+.hidden_list {
+	display: none;
+}
+.hidden_list img {
+	height: 20px;
+	cursor: pointer;
+}
+.list_menu_tabs {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 92px;
+	z-index: 11;
+	border-radius: 5px;
+	background-color: #11b2ac;
+	display: none;
+}
+.list_menu_tabs ul {
+	flex-direction: column;
+}
+.list_menu_tabs li a {
+	color: white;
+	text-decoration: none;
+}
+.list_menu_tabs #my_drugs {
+	position: relative;
+}
+.list_menu_tabs .list_drugs {
+	position: absolute;
+	z-index: 10;
+	right: 111px;
+	top: 0;
+	text-align: center;
+	border-radius: 5px;
+	width: 78px;
+	padding: 6px;
+	color: white;
+	background-color: #11b2ac;
+	display: none;
+}
+.list_menu_tabs li {
+	cursor: pointer;
+}
+#my_drugs_tabs {
+	color: white;
+	cursor: pointer;
+}
 @keyframes rotateme {
 	50% {transform: rotateY(180deg);}
 }
@@ -116,6 +162,9 @@ nav ul li {
 	nav img {
 		height: 88px;
 		margin-right: 10px;
+	}
+	.hidden_list {
+		display: inline-block;
 	}
 }
 

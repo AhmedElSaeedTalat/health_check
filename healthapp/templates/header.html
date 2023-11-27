@@ -1,4 +1,18 @@
 <nav>
+	<div class='list_menu_tabs'>
+		<ul>
+			<li><a href="{{ url_for('home') }}">home</a></li>
+			{% if current_user.is_authenticated %}
+			{% if current_user.role == 'author' %}
+			<li><a href="{{ url_for('article_views.display_articleForm') }}">add article</a></li>
+			{% endif %}
+			{% endif %}
+			{% if current_user.is_authenticated %}
+			<li id='my_drugs_tabs'>my drugs
+			<div class="list_drugs"></div></li>
+			{% endif %}
+		</ul>	
+	</div>
 	<div class='container'>
 		<div class="menu">
 			<div>
@@ -26,6 +40,9 @@
 				 <li> <a href="{{ url_for('user_views.login')}}" class='link-secondary'>login</a></li>
 				 <li><a href="{{ url_for('user_views.register')}}" class='link-secondary'>register</a></li>
 				 {% endif %}
+				 <li class='hidden_list'>
+					<img src="{{ url_for('static', filename='img/list.svg') }}" class='list_icon' alt='list icon'>
+				 </li>
 			</ul>
 			<form class="search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
 			{% if searchform.csrf_token %}
