@@ -16,6 +16,16 @@ body {
 	width: 50%;
 	display: flex;
 }
+
 .search input {
 	margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	.searchBar {
+		flex-direction: column;
+	}
+	.searchBar input {
+		margin-bottom: 5px;
+	}
 }

@@ -100,6 +100,11 @@ $('.searchme_drug').click(function () {
   }
 });
 
+// make sure loading image doesn't show when navigating back
+$(window).on('pageshow', function () {
+	const img = $('.load_img');
+	img.hide();
+});
 
 // add the animate rotatin to logo when loading in search page
 $('.search .btn').click(function() {
