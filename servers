@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-export s1='ubuntu@52.23.178.138';
-export s2='ubuntu@100.25.29.150';
-export s3='ubuntu@100.26.219.201';
