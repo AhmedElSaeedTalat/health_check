@@ -7,6 +7,16 @@
 			<li><a href="{{ url_for('article_views.display_articleForm') }}">add article</a></li>
 			{% endif %}
 			{% endif %}
+			<div class='show_smallScreen'>
+				{% if current_user.is_authenticated %}
+				<li>{{ current_user.username }}</li>
+				<li><a href="{{ url_for('user_views.logout')}}">logout</a></li>
+				{% else %}
+				<li> <a href="{{ url_for('user_views.login')}}">login</a></li>
+				<li><a href="{{ url_for('user_views.register')}}">register</a></li>
+				{% endif %}
+				<li> <a href="{{ url_for('medicine_views.searchbar')}}">search drug</a></li>
+			</div>
 			{% if current_user.is_authenticated %}
 			<li id='my_drugs_tabs'>my drugs
 			<div class="list_drugs"></div></li>
@@ -40,11 +50,9 @@
 				 <li> <a href="{{ url_for('user_views.login')}}" class='link-secondary'>login</a></li>
 				 <li><a href="{{ url_for('user_views.register')}}" class='link-secondary'>register</a></li>
 				 {% endif %}
-				 <li class='hidden_list'>
-					<img src="{{ url_for('static', filename='img/list.svg') }}" class='list_icon' alt='list icon'>
-				 </li>
+				<img src="{{ url_for('static', filename='img/list.svg') }}" class='list_icon hidden_list' alt='list icon'>
 			</ul>
-			<form class="search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
+			<form class="search hide_search" method="POST" action="{{ url_for('medicine_views.display_med') }}">
 			{% if searchform.csrf_token %}
 			{{ searchform.csrf_token(id = "unique_id") }}
 			{% endif %}

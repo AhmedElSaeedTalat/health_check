@@ -101,10 +101,9 @@ nav ul li {
 }
 .hidden_list {
 	display: none;
-}
-.hidden_list img {
 	height: 20px;
 	cursor: pointer;
+	margin: 0;
 }
 .list_menu_tabs {
 	display: none;
@@ -263,4 +262,18 @@ footer a:hover {
 	font-size: 2em;
 	font-family: emoji;
 	margin: 31px 0px 0px 35px;
+}
+.show_smallScreen {
+	display: none;
+}
+@media only screen and (max-width: 300px) {
+	nav .container form.hide_search {
+		display: none;
+	}
+	.show_smallScreen {
+		display: block;
+	}
+	nav .container div li{
+		display: none;
+	}
 }
