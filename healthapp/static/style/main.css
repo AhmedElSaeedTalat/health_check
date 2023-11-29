@@ -59,7 +59,10 @@ nav .container .menu ul li {
 	position: relative;
 }
 #my_drugs {
-	/* display: none; */
+	display: none;
+}
+#my_drugs_tabs {
+	display: none;
 }
 .list_drugs {
 	position: absolute;

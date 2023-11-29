@@ -91,6 +91,7 @@ $(document).ready(function(){
   $.get("{{url_for('user_views.saved_drugs')}}", function (data, satus){
 	  if (data.length > 0) {
 		  $('#my_drugs').css({'display': 'block'});
+		  $('#my_drugs_tabs').css({'display': 'block'});
 	  }
   });
 });
