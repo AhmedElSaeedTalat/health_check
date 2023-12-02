@@ -14,6 +14,7 @@ $('#close').click(function () {
 // function to show diagnosis when symptoms are selected
 $('.form-symptoms button').click(function(e){
   e.preventDefault();
+  $('.no_diagnosis').css({'display': 'none'});
   // show loading image in symptoms.html
   $('.load_img_symptoms').css({'display': 'inline-block'});
   // get data from form
