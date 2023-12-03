@@ -1,5 +1,6 @@
 body {
 	background-color: #e6f5fa;
+	font-family: emoji;
 }
 button {
 	background-color: #11b2ac;
@@ -355,4 +356,26 @@ section.service .img {
 		margin: 55px 0px 55px 0px;
 	}
 
+}
+.about_section {
+	background-image: url('../img/about_image.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 40px;
+}
+.about_section div:nth-child(1) {
+	margin-top: 10px;
+}
+.about_section div {
+	width: 450px;
+}
+.about_section img {
+	height: 160px;
+}
+.about_section h2 {
+	font-size: 1.5em;
 }
