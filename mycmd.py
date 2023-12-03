@@ -25,8 +25,18 @@ class Command(cmd.Cmd):
         with app.app_context():
             bcrypt = Bcrypt()
             username = input('username: ')
+            user = User.query.filter_by(username=username).first()
+            while user:
+                print('username exists please choose another one')
+                username = input('username: ')
+                user = User.query.filter_by(username=username).first()
             password = input('password: ')
             email = input('email: ')
+            user = User.query.filter_by(email=email).first()
+            while user:
+                print('email exists please choose another one')
+                email = input('email: ')
+                user = User.query.filter_by(email=email).first()
             role = 'author'
             pwd = bcrypt.generate_password_hash(password).decode('utf-8')
             user = User(username=username, email=email, password=pwd,

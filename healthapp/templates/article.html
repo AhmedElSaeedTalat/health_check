@@ -14,7 +14,9 @@
 			{{ article.title }}
 		</h3>
 		<p> {{ article.content }}</p>
+		{% if article.user %}
 		<span><i>created by: {{ article.user.username }}</i></span>
+		{% endif %}
 	</article>
 </section>
 {% endblock content %}
