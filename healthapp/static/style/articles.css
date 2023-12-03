@@ -59,6 +59,11 @@
 	margin: 22px 0px 0px 22px;
 	font-size: 1.5em;
 }
+#remove_article {
+	color: white;
+	background-color: #10b2ac;
+	margin-bottom: 10px;
+}
 @media only screen and (max-width: 1024px) {
 	.single_article article {
 		width: 80%;

@@ -6,6 +6,7 @@ from flask_login import current_user
 from healthapp.views.forms import ArticleForm
 import os
 import secrets
+import json
 
 
 article_views = Blueprint('article_views', __name__, url_prefix='/articles')
@@ -68,3 +69,15 @@ def display_articles(id=None):
     else:
         articles = Article.query.all()
         return render_template('articles.html', articles=articles)
+
+
+@article_views.route('/delete/<int:id>',
+                     methods=['DELETE'], strict_slashes=False)
+def delete_article(id):
+    """ delete article """
+    from healthapp import db
+    from healthapp.models.articles import Article
+    article = Article.query.filter_by(id=id).first()
+    db.session.delete(article)
+    db.session.commit()
+    return jsonify('success', 200)

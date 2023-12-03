@@ -209,3 +209,13 @@ $('#my_drugs_tabs').on("click", function() {
        }
   }
 });
+// remove article js
+$('#remove_article').click(function () {
+  const id = $(this).attr('data')
+  $.ajax("/articles/delete/"+id, {
+    type: "DELETE",
+  }).done(function() {
+    alert('deleted');
+    window.location.replace("/home");    
+  })
+});
