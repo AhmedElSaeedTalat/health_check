@@ -27,7 +27,8 @@ def create_app():
     Session(app)
     db.init_app(app)
     login_manager = LoginManager(app)
-    app.add_url_rule('/', view_func=index.home)
+    app.add_url_rule('/', view_func=index.main)
+    app.add_url_rule('/home', view_func=index.home)
 
     @app.context_processor
     def inject_variable():

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="about">
+	<div class="heading_about">
+		<h1> Get your health Better </h1>
+		<p>need to know more about your medicines, and your symptoms</p>
+	</div>
+	<div>
+		<div class="captures">
+			<img src="{{ url_for('static', filename='img/capture1.jpg') }}" alt="search screen">
+			<img src="{{ url_for('static', filename='img/symptom_cap.jpg') }}" alt="symptom screen">
+		</div>
+	</div>
+</section>
+<section class="separator">
+</section>
+<section class="service">
+		<div class="text">
+			<h2>Search for your medicine</h2>
+			<p> here you can search for you Medicine and know details on formula, description and more</p>
+		</div>
+		<div class="img">
+			<a href="{{ url_for('medicine_views.searchbar') }}"><img src="{{ url_for('static', filename='img/capture1.jpg') }}" alt="search screen"></a>
+		</div>
+</section>
+<section class="service">
+		<div class="img">
+			<a href="{{ url_for('medicine_views.health_check') }}"><img src="{{ url_for('static', filename='img/symptom_cap.jpg') }}" alt="symptom screen"></a>
+		</div>
+		<div class="text">
+			<h2>Check for diagnosis</h2>
+			<p> Complain from a symptom, find us and check for your diagnosis easily done </p>
+		</div>
+</section>
+<section class="service">
+		<div class="text">
+			<h2>Add Medicines Articles</h2>
+			<p> Have knowledge about medicine, feel free to contact us and add your own article </p>
+		</div>
+		<div class="img">
+			<a href="#"><img src="{{ url_for('static', filename='img/article_cap.jpg') }}" alt="article form screen"></a>
+		</div>
+</section>
+<section class="service">
+		<div class="img">
+			<a href="{{ url_for('article_views.display_articles') }}"><img src="{{ url_for('static', filename='img/read_article.jpg') }}" alt="read article screen"></a>
+		</div>
+		<div class="text">
+			<h2>Check our articles</h2>
+			<p> Check our medicine articles, made up by medicine experts </p>
+		</div>
+</section>
+{% endblock content %}

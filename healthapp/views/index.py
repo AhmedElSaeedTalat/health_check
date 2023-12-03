@@ -3,6 +3,11 @@
 from flask import render_template
 
 
+def main():
+    """ show landing page """
+    return render_template('about.html')
+
+
 def home():
     """ home view function """
     from healthapp.models.articles import Article
