@@ -355,6 +355,9 @@ section.service .img {
 	section.about {
 		margin: 55px 0px 55px 0px;
 	}
+	.about_section {
+		text-align: center;
+	}
 
 }
 .about_section {
