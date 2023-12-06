@@ -1,3 +1,7 @@
+.no_drug_found {
+	min-height: 40vw;
+	padding: 10px;
+}
 #drugs {
 	display: flex;
 	flex-direction: column;
