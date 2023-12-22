@@ -55,4 +55,4 @@ $ Use quit command to quiet `quit`
 Ahmed Talat [Github](https://github.com/AhmedElSaeedTalat) | [twitter](https://twitter.com/AhmedElsaeed105)
 
 ## url
-deployed on heroku [health check](https://megablog.tech/)
+deployed on  [health check](https://megablog.tech/)
